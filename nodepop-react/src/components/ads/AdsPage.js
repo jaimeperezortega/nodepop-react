@@ -1,59 +1,13 @@
 import './AdsPage.css';
-
-
-const ads = [
-    {
-      "id": "60083439-afba-4ddd-9e7b-10ab0082ce4a",
-      "createdAt": "2021-03-26T17:29:12.000Z",
-      "name": "Funda Iphone XS",
-      "sale": true,
-      "price": 15,
-      "tags": [
-        "lifestyle",
-        "mobile"
-      ],
-      "photo": null
-    },
-    {
-      "id": "6b3f75b3-a399-44aa-86bb-26cbd76e2638",
-      "createdAt": "2021-03-26T17:30:04.000Z",
-      "name": "Patinete eléctrico",
-      "sale": true,
-      "price": 125,
-      "tags": [
-        "lifestyle",
-        "mobile",
-        "work"
-      ],
-      "photo": null
-    },
-    {
-      "id": "3afbde0c-730f-4db8-891c-cc9779c9ce0f",
-      "createdAt": "2021-03-26T17:30:24.000Z",
-      "name": "Bicicleta estática",
-      "sale": false,
-      "price": 75,
-      "tags": [
-        "lifestyle"
-      ],
-      "photo": null
-    },
-    {
-      "id": "7fbbe0ed-3afa-440d-913d-1acb1d509eaa",
-      "createdAt": "2021-03-26T17:30:50.000Z",
-      "name": "Monitor Samsung",
-      "sale": true,
-      "price": 49,
-      "tags": [
-        "work"
-      ],
-      "photo": null
-    }
-  ];
-
+import {getAds} from '../../api/ads'
+import React from 'react';
 
 
 const AdsPage = ()=>{
+
+    //1. Primero seteamos el estado de nuestro componente a un array vacío para que se renderice el DOM 
+
+    const [ads, setAds] = React.useState([]);
 
     const items = ads.map(ad => 
         
@@ -75,6 +29,12 @@ const AdsPage = ()=>{
             </div> 
         </article>
         );
+
+
+        // 2. Para tener actualizado el estado de mi componente, utilizo el hook useEffect para que se ejecute justo después de que se monte el DOM. El useEffect actualiza el estado de mi componente con lo que me llega como respuesta de la peticion al servidor. Al cambiar el estado se va a forzar un nuevo render
+        React.useEffect(()=>{
+            getAds().then(response => setAds(response.data));
+        })
     
     return(
         <div>
