@@ -2,10 +2,13 @@ import client from './client';
 
 const adsBaseUrl = 'http://localhost:8000/api/';
 
-export const getAds = () => {
+export const getAds =  () => {
   
     const url = `${adsBaseUrl}/adverts`;
-  return client.get(url);
+    const response = client.get(url)
+    
+
+    return response
 };
 
 

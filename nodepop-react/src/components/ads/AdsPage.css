@@ -6,6 +6,10 @@
     flex-wrap: wrap;   
 }
 
+.detailedButton{
+    cursor:pointer;
+}
+
 .adWrapper{
     max-width: 350px;
     min-width: 350px;
@@ -19,7 +23,7 @@
     border-width: 1px;
     border-radius: 5px;
     border-style: solid;
-    border-color: lightslategray;
+    border-color: rgb(29,  161, 242);
 
 }
 
@@ -27,6 +31,7 @@
     font-size: 1.6rem;
     margin: 25px;
     color: black;
+    cursor: pointer;
 }
 
 .adPrice{
