@@ -17,13 +17,16 @@ function LoginForm() {
     });
     
 
-    //Genero un manejador del evento para que cada vez que un inpit del formulario cambie, setee ese nuevo estado del componente obligando a su renderizado. 
+    //Genero un manejador del evento para que cada vez que un inpit del formulario cambie, setee ese nuevo estado del componente obligando a su renderizado. Dado que mi estado depende del estado anterior, le pasamos una función que recibe como parámetro el estado anterior y a partir de ese estado anterior le generamos el nuevo estado
     const handleInputChange = event =>{
-        const newCredentials = {
-            ...credentials, 
-            [event.target.name]: event.target.value
-        };
-        setCredentials(newCredentials);
+        setCredentials(oldCredentials => {
+
+            const newCredentials = {
+                ...oldCredentials,
+                [event.target.name]: event.target.value,
+            }
+           return newCredentials
+        });
         
     }
 
