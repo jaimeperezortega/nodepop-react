@@ -2,6 +2,7 @@ import './AdsPage.css';
 import {getAds} from '../../api/ads'
 import React from 'react';
 import Button from '../shared/Button';
+import Layout from '../layout/Layout';
 
 
 
@@ -49,9 +50,11 @@ const AdsPage = ()=>{
 
     
     return(
-        <div>
+        <Layout title="Nodepop React">
             <div  className= 'adsPage'>{items}</div>
-        </div>
+        </Layout>
+           
+        
 
         
         
