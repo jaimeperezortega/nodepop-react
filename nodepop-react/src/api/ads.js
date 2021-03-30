@@ -1,6 +1,6 @@
 import client from './client';
 
-const adsBaseUrl = 'http://localhost:8000/api/';
+const adsBaseUrl = 'http://localhost:3001/api/';
 
 export const getAds =  () => {
   
