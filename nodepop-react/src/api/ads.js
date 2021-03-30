@@ -11,5 +11,13 @@ export const getAds =  () => {
     return response
 };
 
+export const getAdDetail = adId => {
+    const url = `${adsBaseUrl}/adverts/${adId}`;
+    const response = client.get(url);
+
+    return response
+  };
+  
+
 
 
