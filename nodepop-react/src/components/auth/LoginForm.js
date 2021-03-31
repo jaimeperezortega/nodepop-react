@@ -7,6 +7,7 @@ import FormField from '../shared/FormField';
 
 import './LoginForm.css';
 import T from 'prop-types';
+import Checkbox from '../shared/SessionCheckBox';
 
 function LoginForm({onSubmit, isLoading}) {
 
@@ -27,6 +28,13 @@ LoginForm.defaultProps = { //Es buena idea pasar por defaukt props los que sean 
         email: '',
         password: '',
     });
+
+    const [checkboxChecked, setcheckboxChecked] = React.useState(false)
+
+    const clickOnCheckBox = () => {
+      setcheckboxChecked(!checkboxChecked);
+      
+    }
     
 
     //Genero un manejador del evento para que cada vez que un inpit del formulario cambie, setee ese nuevo estado del componente obligando a su renderizado. Dado que mi estado depende del estado anterior, le pasamos una función que recibe como parámetro el estado anterior y a partir de ese estado anterior le generamos el nuevo estado
@@ -62,12 +70,12 @@ LoginForm.defaultProps = { //Es buena idea pasar por defaukt props los que sean 
 
     const handleSubmit = event =>{
         event.preventDefault();
-        onSubmit(credentials);
-        console.log(credentials);
+        onSubmit(credentials, checkboxChecked);
         
     }
 
     const {email, password} = credentials; // Desestructuro las propiedades username y password del objeto credentials
+
 
   return (
     <form className="loginForm" onSubmit = {handleSubmit}>
@@ -87,6 +95,8 @@ LoginForm.defaultProps = { //Es buena idea pasar por defaukt props los que sean 
         value={password}
         onChange = {handleInputChange}
       />
+     
+    <Checkbox clickOnCheckBox={clickOnCheckBox} />
       <Button type="submit" className="loginForm-submit" variant="primary" disabled={isLoading || !credentials.email || !credentials.password} > {/*Con este condicional establezaco si el botón está o no habilitado en función del estado del componente. Si no hay valor en username o en password, el botón queda deshabilitado}*/}
 
       

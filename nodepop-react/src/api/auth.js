@@ -2,11 +2,12 @@
 
 import client, {configureClient, resetClient} from './client'
 
-export const login = credentials => {
+export const login = (credentials, checkboxChecked) => {
 
     return client.post('http://localhost:3001/api/auth/login', credentials).then(({ accessToken }) => {
+        
         configureClient({accessToken});
-        localStorage.setItem('token', accessToken);
+        checkboxChecked &&  localStorage.setItem('token', accessToken);
     });
 
 };
