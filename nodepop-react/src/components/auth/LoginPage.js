@@ -13,20 +13,28 @@ function LoginPage({onLogin}) {
 
   const [isLoading, setIsLoading] = React.useState(false);
 
-  
+  const isLogged = React.useRef(false);
+
+  React.useEffect(() =>{
+    if(isLogged.current){
+      onLogin();
+    }
+
+  }, [isLogged.current, onLogin])
 
     const handleSubmit = async (credentials, checkboxChecked) =>{
-      
+      setIsLoading(true);
       try {
-        setIsLoading(true);
-        await login(credentials, checkboxChecked);
-        onLogin();
         
+        await login(credentials, checkboxChecked);
+        isLogged.current = true;
         
       } catch (error) {
         setError(error);
+        
+      } finally {
         setIsLoading(false);
-      } 
+      }
     
     }
 

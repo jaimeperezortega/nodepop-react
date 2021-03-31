@@ -6,6 +6,22 @@ import Layout from '../layout/Layout';
 
 
 
+const EmptyList = () => (
+
+    <div style={{textAlign: 'center'}}>
+        <h2>No hay anuncios publicados</h2>
+        <p>¡Puedes ser el primero! </p>
+        <Button variant="primary">
+            Publicar Anuncio
+        </Button>
+
+    </div>
+
+);
+
+
+
+
 const AdsPage = (props)=>{
 
     //1. Primero seteamos el estado de nuestro componente a un array vacío para que se renderice el DOM 
@@ -51,7 +67,7 @@ const AdsPage = (props)=>{
     
     return(
         <Layout title="Nodepop React" {...props}>
-            <div  className= 'adsPage'>{items}</div>
+            {ads.length ? <div  className= 'adsPage'>{items}</div> : <EmptyList/>}
         </Layout>
            
         

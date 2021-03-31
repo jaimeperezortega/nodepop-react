@@ -16,7 +16,7 @@ function Checkbox({clickOnCheckBox}) {
       value={true}
       type="checkbox"
     />
-    Mantener sesión
+    Recuerdame
    </label>
   );
 }
