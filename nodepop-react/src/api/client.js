@@ -7,4 +7,18 @@ const baseURL = 'http://localhost:3001'
 const client = axios.create({ baseURL: process.env.REACT_APP_API_BASE_URL });
 client.interceptors.response.use(response => response.data) //Con este interceptor, todas las peticiones que haga axios, van a devolverme los datos ya modelizados a los anuncios. En el método no tengo que preoucparme por averiguar como me llegan esos datos desde axios. Si hay un error le podemos pasar una función en el 2º parámetro
 
+
+// Axios permite a través de esta función establecer el token en nuestras cabeceras que recibamos después de una peticion de login. 
+
+const setAuthorizationHeader = token =>{
+    client.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+}
+
+// Ahora configuramos que si tenemos accessToken haga la peticion de login estableciendo el token en las cabeceras
+export const configureClient = ({accessToken}) => {
+    if (accessToken) {
+        setAuthorizationHeader(accessToken);
+    }
+};
+
 export default client;
