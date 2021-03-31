@@ -3,8 +3,15 @@ import classNames from 'classnames';
 import {ReactComponent as Icon} from '../../assets/nodepop.svg';
 import Button from '../shared/Button';
 import './Header.css';
+import {logout} from '../../api/auth.js'
 
 const Header = ({ className, isLogged, onLogout }) => {
+
+  const logOutFunc = () =>{
+    onLogout()
+    logout();
+  }
+
   return (
     <header className={classNames('header', className)} >
       
@@ -23,7 +30,7 @@ const Header = ({ className, isLogged, onLogout }) => {
       {/*Aquí en el Header vamos a necesitar poder acceder al estado de App.js porque si está loggeado, este componente va a mostrar el botón de LogOut, sin embargo, si no está loggeado va a mostrar el botón de Log In. Para ello, vamos a necesitar poder pasar esta información desde App.js hasta Header.js a través de las props */}
 
       {isLogged ? (
-        <Button className="header-button" onClick={onLogout}>Logout</Button>
+        <Button className="header-button" onClick={logOutFunc}>Logout</Button>
     
       ) : (
         <Button className="header-button">Login</Button>

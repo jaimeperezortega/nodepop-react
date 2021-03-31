@@ -6,8 +6,20 @@ import Button from '../shared/Button';
 import FormField from '../shared/FormField';
 
 import './LoginForm.css';
+import T from 'prop-types';
 
 function LoginForm({onSubmit, isLoading}) {
+
+  // Utilizamos las proptypes para asegurarnos de que mandamos las props necesarias desde un padre a un hijo. Si por ejemplo yo tengo un onSubmit en este formulario que e suna función que no le he pasado desde arriba, puedo hacer que las proptypes me avisen de que falta recibir esa prop antes de intentar ejecutarlo. Es un chequeo dinámico de las props.
+
+LoginForm.propTypes = {
+  onSubmit: T.func,
+  
+};
+
+LoginForm.defaultProps = { //Es buena idea pasar por defaukt props los que sean requeridos. Así nos aseguramos que si una prop no nos llega tenga un valor por defecto
+  isLoading: false,
+}
 
     
     //Establezco primero el estado de mi componente con un objeto que contiene mi username y password como un string vacío cada uno
@@ -83,5 +95,7 @@ function LoginForm({onSubmit, isLoading}) {
     </form>
   );
 }
+
+
 
 export default LoginForm;

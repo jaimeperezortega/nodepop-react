@@ -24,11 +24,11 @@ function LoginPage({onLogin}) {
         await login(credentials);
         onLogin();
         
+        
       } catch (error) {
-        setError(error)
-      } finally{
+        setError(error);
         setIsLoading(false);
-      }
+      } 
     
     }
 
