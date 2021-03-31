@@ -7,7 +7,7 @@ import FormField from '../shared/FormField';
 
 import './LoginForm.css';
 
-function LoginForm({onSubmit}) {
+function LoginForm({onSubmit, isLoading}) {
 
     
     //Establezco primero el estado de mi componente con un objeto que contiene mi username y password como un string vacío cada uno
@@ -75,7 +75,7 @@ function LoginForm({onSubmit}) {
         value={password}
         onChange = {handleInputChange}
       />
-      <Button type="submit" className="loginForm-submit" variant="primary" disabled={!credentials.email || !credentials.password} > {/*Con este condicional establezaco si el botón está o no habilitado en función del estado del componente. Si no hay valor en username o en password, el botón queda deshabilitado}*/}
+      <Button type="submit" className="loginForm-submit" variant="primary" disabled={isLoading || !credentials.email || !credentials.password} > {/*Con este condicional establezaco si el botón está o no habilitado en función del estado del componente. Si no hay valor en username o en password, el botón queda deshabilitado}*/}
 
       
         Log in

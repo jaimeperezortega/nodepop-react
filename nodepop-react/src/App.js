@@ -9,10 +9,12 @@ const [isLogged, setIsLogged] = React.useState(false); //Seteamos el estado de s
 
 const handleLogin = () => setIsLogged(true); //Cuando en el LoginPage se produzca el evento onLogin, se va a disparar el método handleLogin que lo único que hace es cambiar el estado isLogged a true
 
+const handleLogout = () => setIsLogged(false);
+
 
   return (
     <div className="App">
-      {isLogged ? <AdsPage isLogged={isLogged} /> : <LoginPage onLogin={handleLogin}/> }
+      {isLogged ? <AdsPage onLogout = {handleLogout} isLogged={isLogged} /> : <LoginPage onLogin={handleLogin}/> }
       
     </div>
   );
