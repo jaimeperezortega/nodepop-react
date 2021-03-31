@@ -6,7 +6,7 @@ import Layout from '../layout/Layout';
 
 
 
-const AdsPage = ()=>{
+const AdsPage = (props)=>{
 
     //1. Primero seteamos el estado de nuestro componente a un array vacío para que se renderice el DOM 
 
@@ -50,7 +50,7 @@ const AdsPage = ()=>{
 
     
     return(
-        <Layout title="Nodepop React">
+        <Layout title="Nodepop React" {...props}>
             <div  className= 'adsPage'>{items}</div>
         </Layout>
            

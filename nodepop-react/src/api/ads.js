@@ -1,10 +1,10 @@
 import client from './client';
 
-const adsBaseUrl = 'http://localhost:3001/api/';
+//const adsBaseUrl = 'http://localhost:3001/api/';
 
 export const getAds =  () => {
   
-    const url = `${adsBaseUrl}/adverts`;
+    const url = `http://localhost:3001/api/v1/adverts`;
     const response = client.get(url)
     
 
@@ -12,7 +12,7 @@ export const getAds =  () => {
 };
 
 export const getAdDetail = adId => {
-    const url = `${adsBaseUrl}/adverts/${adId}`;
+    const url = `http://localhost:3001/api/${adId}`;
     const response = client.get(url);
 
     return response

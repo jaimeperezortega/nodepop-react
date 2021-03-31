@@ -30,7 +30,23 @@ function LoginForm({onSubmit}) {
         
     }
 
-    //Creo el método que va a manejar el evento submit del formulario
+    //Creo el método que va a manejar el evento submit del formulario.
+
+    // ¿ Cómo es el flujo desde que hago submit en el formulario para setear el estado de mi componente principal App.js a true?
+
+    //1. Al pinchar en el botón del formulario, como es de tipo submit, lo que hace es disparar el submit
+
+    //2. Al hacer submit se dispara el evento handleSubmit  que consiste en prevenir el comportamniento por defecto y llama a la prop onSubmit (pasándole las credentials obtenidas en este formulario) que recibe arriba del todo y que está diseñada para responder  a eventos submit. Esta prop se la ha pasado a LoginForm su padre LoginPage. El onSubmit que le ha llegado desde su padre se ha definido en LoginPage como handle Submit:
+    //  const handleSubmit = async credentials =>{
+    //     await login(credentials);
+    //     onLogin();
+    // }
+
+    // 3. Al ejecutar este método handleSubmit vemos que se produce una llamada a la api a través de login (pasándole credentials) y cuando haya hecho esta llamada a la api satisfactoriamente (es asíncrono), luego ejecuta la prop que recibe LoginPage (onlogin) que se la está pasando su padre App.js
+
+    //4. Por último, la prop onLogin que le está pasando el padre App.js a LoginPage.js es una función que se llama handleLogin que es tan sencilla como esto: const handleLogin = () => setIsLogged(true); 
+
+    // DE ESTA FORMA, UN EVENTO QUE SE HA PRODUCIDO EN UN COMPONENTE HIJO MUCHO MÁS ABAJO DEL PADRE, REPERCUTE EN EL ESTADO DEL PADRE
 
     const handleSubmit = event =>{
         event.preventDefault();
