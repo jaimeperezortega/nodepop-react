@@ -40,7 +40,10 @@ const AdsPage = (props)=>{
     }, []);
 
     
-    const handleClick = (id) => console.log(id);
+    const handleClick = (id) => {
+        console.log(`/ad/${id}`)
+        
+    };
 
     const items = ads.map(ad =>  //Modelizo los datos aue voy a recibir de la API para pintarlos en el formato que deseo
         
