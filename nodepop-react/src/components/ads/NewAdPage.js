@@ -6,14 +6,14 @@ import Layout from '../layout/Layout';
 
 
 
-const AdDetailedPage = ()=>{
+const NewAdPage = ()=>{
 
 
-  
+    
     
     return(
         <Layout title="Nodepop React">
-            <h1>Páginad de detalle de anuncio</h1>
+            <h1>NEW AD PAGE</h1>
         </Layout>
            
         
@@ -23,4 +23,4 @@ const AdDetailedPage = ()=>{
     )
 }
 
-export default AdDetailedPage;
+export default NewAdPage;
