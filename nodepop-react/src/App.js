@@ -23,7 +23,9 @@ const handleLogout = () => setIsLogged(false);
        <Route path='/ad/:adId' component={AdDetailPage} /> 
        <Route path='/new-ad' component={NewAdPage} />
        <Route path='/login'>
-        {() => isLogged ? <Redirect to ="/"/> : <LoginPage onLogin={handleLogin} />}
+        {({history}) => (
+        <LoginPage history={history} onLogin={handleLogin} />
+        )}
 
        </Route>
        <Route exact path='/'>

@@ -7,7 +7,7 @@ import {login} from '../../api/auth'
 
 import './LoginPage.css';
 
-function LoginPage({onLogin}) {
+function LoginPage({onLogin, history}) {
  
   const [error, setError] = React.useState(null);
 
@@ -18,6 +18,8 @@ function LoginPage({onLogin}) {
   React.useEffect(() =>{
     if(isLogged.current){
       onLogin();
+      history.push('/')
+      
     }
 
   }, [isLogged.current, onLogin])
