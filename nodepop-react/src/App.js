@@ -30,7 +30,13 @@ const handleLogout = () => setIsLogged(false);
 
        </Route>
        <Route exact path='/'>
-       <AdsPage  onLogout = {handleLogout} isLogged={isLogged} />
+         {({history}) => (
+         <AdsPage
+           onLogout = {handleLogout} 
+           isLogged={isLogged} 
+           history={history} 
+           />
+         )}
        </Route>
        <Route path="/404" component= {PageNotFound}/>
             

@@ -3,6 +3,7 @@ import {getAds} from '../../api/ads'
 import React from 'react';
 import Button from '../shared/Button';
 import Layout from '../layout/Layout';
+import Ad from './Ad'
 
 
 
@@ -39,44 +40,16 @@ const AdsPage = (props)=>{
          });
     }, []);
 
-    
-    const handleClick = (id) => {
-        console.log(`/ad/${id}`)
-        
-    };
-
-    const items = ads.map(ad =>  //Modelizo los datos aue voy a recibir de la API para pintarlos en el formato que deseo
-        
-        <article key={ad.id} className = "adWrapper">
-            <h2  className = "adTitle">{ad.name}</h2>
-           
-            
-            {ad.sale ? 
-            <div className ="venta">
-                <span className = "adPrice">Precio: {ad.price} €</span>
-            </div> 
-            : 
-            <div className = "compra">
-                <span className = "adPrice">Ofrezco máximo: {ad.price} €</span>
-
-            </div>} 
-            <div>{ad.tags.map( tag => 
-               <div key ={tag}className="tagItem">#{tag} </div>)}
-            
-            </div> 
-            <Button  className= "detailedButton" onClick={event => handleClick(ad.id)}>Ver detalle</Button>
-        </article>
-        );
 
     
     return(
         <Layout title="Nodepop React" {...props}>
-            {ads.length ? <div  className= 'adsPage'>{items}</div> : <EmptyList/>}
+            {ads.length ? 
+            <Ad {...props} adsList = {ads}/>
+            : <EmptyList/>}
         </Layout>
            
-        
-
-        
+    
         
     )
 }
