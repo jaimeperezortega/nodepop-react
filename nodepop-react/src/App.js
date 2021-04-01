@@ -7,6 +7,7 @@ import LoginPage from './components/auth/LoginPage'
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import PageNotFound from './components/shared/404';
+import PrivateRoute from './components/auth/PrivateRoute';
 
 function App({ isInitiallyLogged}) {
 const [isLogged, setIsLogged] = React.useState(isInitiallyLogged); //Seteamos el estado de si un usuario está logeado o no en el nivel más alto de nuestra aplicación (App.js) para que pueda funcionar de un modo u otro en función de ese estado. El login se va a producir en el login page porque es donde se va a disparar la acción. Por ello, hay que definir en el Login Page una prop que responda a eso. Vamos a llamar a ese método onLogin. Digamos que LoginPage utiliza este evento para informar a su padre (App.js) de que un usuario está o no logeado
@@ -20,8 +21,8 @@ const handleLogout = () => setIsLogged(false);
     <div className="App">
       <Switch>
 
-       <Route path='/ad/:adId' component={AdDetailPage} /> 
-       <Route path='/new-ad' component={NewAdPage} />
+       <PrivateRoute isLogged={isLogged} path='/ad/:adId' component={AdDetailPage} /> 
+       <PrivateRoute isLogged={isLogged} path='/new-ad' component={NewAdPage} />
        <Route path='/login'>
         {({history}) => (
         <LoginPage history={history} onLogin={handleLogin} />
