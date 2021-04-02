@@ -27,6 +27,24 @@
 
 }
 
+.adWrapperDetail {
+
+    max-width: 350px;
+    min-width: 350px;
+    max-height: 650px;
+    min-height: 180px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 30px;
+    padding-right:30px;
+    margin:10px;
+    border-width: 1px;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: rgb(29,  161, 242);
+
+}
+
 .adTitle{
     font-size: 1.6rem;
     margin: 25px;

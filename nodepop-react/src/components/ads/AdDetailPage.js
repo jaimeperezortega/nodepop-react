@@ -35,7 +35,7 @@ const AdDetailedPage = (props) => {
         <Layout title="Nodepop React">
         {ad && <div className= 'adsPage'>
 
-<article key={ad.id} className = "adWrapper">
+<article key={ad.id} className = "adWrapperDetail">
     <h2  className = "adTitle">{ad.name}</h2>
    
     
