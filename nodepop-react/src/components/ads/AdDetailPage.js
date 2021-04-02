@@ -55,7 +55,7 @@ const AdDetailedPage = (props) => {
 
     <img src= {`http://localhost:3001${ad.photo}`} />
 
-    {`http://localhost:3001/${ad.photo}`}
+    
     
 </article>
     
