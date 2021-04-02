@@ -27,6 +27,8 @@ const AdDetailedPage = (props) => {
         return <Redirect to='/404'/> 
     }
 
+
+
     return (
    
 
@@ -50,6 +52,10 @@ const AdDetailedPage = (props) => {
        <div key ={tag}className="tagItem">#{tag} </div>)}
     
     </div> 
+
+    <img src= {`http://localhost:3001${ad.photo}`} />
+
+    {`http://localhost:3001/${ad.photo}`}
     
 </article>
     
