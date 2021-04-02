@@ -2,6 +2,7 @@
 import React from 'react';
 import Layout from '../layout/Layout';
 import Button from './Button';
+import {Link} from 'react-router-dom'
 
 
 const PageNotFound = () =>{
@@ -13,7 +14,14 @@ const PageNotFound = () =>{
             
 
             
-           <Button>Vuelve a la Home</Button>
+            <Button
+          as={Link}
+          to="/"
+          variant="primary"
+          className="header-button"
+        >
+          Volver al listado
+        </Button>
 
         </div>
         

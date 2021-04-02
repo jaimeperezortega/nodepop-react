@@ -5,24 +5,31 @@ import Button from '../shared/Button';
 import Layout from '../layout/Layout';
 import { render } from 'react-dom';
 import {getAdDetail} from '../../api/ads';
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 
 
 
 const AdDetailedPage = (props) => {
-    const [ad, setAd] = React.useState(null)
+    const [ad, setAd] = React.useState(null);
+    const [error, setError] = React.useState(null)
 
 
     React.useEffect(() =>{
 
-        getAdDetail(props.match.params.adId).then(ad => setAd(ad))
+        getAdDetail(props.match.params.adId).then(ad => setAd(ad)).catch(error => setError(error.statusCode))
         
         
     },[]);
 
-    
+    if(error === 404){
+
+
+        return <Redirect to='/404'/> 
+    }
 
     return (
+   
+
         <Layout title="Nodepop React">
         {ad && <div className= 'adsPage'>
 
@@ -47,7 +54,7 @@ const AdDetailedPage = (props) => {
 </article>
     
     
-    </div>  }
+    </div> }
 
     <Button
           as={Link}
