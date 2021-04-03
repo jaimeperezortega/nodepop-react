@@ -22,7 +22,10 @@ const handleLogout = () => setIsLogged(false);
       <Switch>
 
        <PrivateRoute isLogged={isLogged} path='/ad/:adId' component={AdDetailPage} /> 
-       <PrivateRoute isLogged={isLogged} path='/new-ad' component={NewAdPage} />
+       <Route path='/new-ad'>
+        {routerProps => <NewAdPage isLogged = {isLogged}/>}
+
+       </Route>
        <Route path='/login'>
         {({history}) => (
         <LoginPage history={history} onLogin={handleLogin} />
