@@ -4,6 +4,7 @@ import React from 'react';
 import Button from '../shared/Button';
 import Layout from '../layout/Layout';
 import { Redirect } from 'react-router-dom';
+import NewAdForm from './NewAdForm';
 
 
 
@@ -16,7 +17,8 @@ const NewAdPage = ({isLogged})=>{
 
        
             <Layout isLogged={isLogged} title="Nodepop React">
-                <h1>NEW AD PA ccv cvxGE</h1>
+                <h1>PUBLICAR ANUNCIO</h1>
+                <NewAdForm/>
             </Layout>
             
         )

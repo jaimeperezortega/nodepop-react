@@ -5,7 +5,7 @@ import classNames from 'classnames';
 
 
 
-function Checkbox({clickOnCheckBox}) {
+function Checkbox({clickOnCheckBox, title, value}) {
 
   
   return (
@@ -13,10 +13,10 @@ function Checkbox({clickOnCheckBox}) {
     <input
       onClick = {clickOnCheckBox}
       name="example_1"
-      value={true}
+      value= {false}
       type="checkbox"
     />
-    Recuerdame
+    {title}
    </label>
   );
 }
