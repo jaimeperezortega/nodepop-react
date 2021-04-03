@@ -10,17 +10,20 @@ import Checkbox from '../shared/SessionCheckBox';
 
 const NewAdForm = () =>{
 
-    const clickOnCheckBox = () => {
-        // const text = ""
-        // value ? text="En venta" : text = "Compro"
-        console.log("Click on checkbox");
-        
-      }
+
 
     const [inputs, setInputs] = React.useState({
         title: '',
         price: '',
+        onSale: null,
     });
+
+    const handleClickOnOption = (event, value) =>{
+        console.log("Click en Option", value);
+        
+
+ 
+    }
 
     const handleSubmit = event =>{
         event.preventDefault();
@@ -61,8 +64,15 @@ const NewAdForm = () =>{
           onChange = {handleInputChange}
         />
        
-      <Checkbox clickOnCheckBox={clickOnCheckBox} title={"Vendo"} value={true}  />
-      <Checkbox clickOnCheckBox={clickOnCheckBox} title={"compro"} value ={false}  />
+    
+
+        <select name="select">
+            <option onSubmit ={handleInputChange}  value= {true}>Vendo</option>
+            <option onSelect ={handleInputChange} value= {false} >Compro</option>
+            
+    </select>
+
+
         <Button type="submit" className="loginForm-submit" variant="primary" disabled={ !inputs.title || !inputs.price} > 
   
         

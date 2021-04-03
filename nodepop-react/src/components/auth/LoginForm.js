@@ -97,6 +97,11 @@ LoginForm.defaultProps = { //Es buena idea pasar por defaukt props los que sean 
       />
      
     <Checkbox clickOnCheckBox={clickOnCheckBox} />
+    <select name="select">
+  <option value="value1">Value 1</option>
+  <option value="value2" selected>Value 2</option>
+  <option value="value3">Value 3</option>
+</select>
       <Button type="submit" className="loginForm-submit" variant="primary" disabled={isLoading || !credentials.email || !credentials.password} > {/*Con este condicional establezaco si el botón está o no habilitado en función del estado del componente. Si no hay valor en username o en password, el botón queda deshabilitado}*/}
 
       
