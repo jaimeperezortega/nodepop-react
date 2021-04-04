@@ -5,13 +5,13 @@ import classNames from 'classnames';
 
 
 
-function Checkbox({clickOnCheckBox, title, value, name}) {
+function Checkbox({onChange, title, value, name}) {
 
   
   return (
     <label>
     <input
-      onClick = {clickOnCheckBox}
+      onChange = {onChange}
       name={name}
       checked= {value}
       type="checkbox"

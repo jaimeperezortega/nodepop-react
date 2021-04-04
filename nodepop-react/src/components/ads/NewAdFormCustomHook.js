@@ -13,46 +13,25 @@ const NewAdFormWithCustomHook = () =>{
     const [formValues, handleInputChange] = useForm({
         title:"",
         price:"",
-        onSale:true,
-        lifestyle:false,
-        mobile:false,
-        motor:false,
-        work: false
+        tag:"",
 
     });
 
-    // const [checkedItems, setCheckedItems] = useState({tags:[]});
+    const [onSale, setOnSale] = useState(true);
 
-    // const handleChangeCheckbox = (event) =>{
-    //     // setCheckedItems({...checkedItems, tags.push(event.target.checked)})
-    //     const selectedTags = [];
-    //     // selectedTags.push(event.target.checked)
-    //     console.log(selectedTags)
-    // }
 
-    // useEffect(() => {
-    //     console.log("checkedItems: ", formValues)
-        
-    // }, [formValues])
 
-    // const [selectValue, setSelectValue] = useState(true)
-
-    // const handleSelectChange = (event) =>{
-
-    //     setSelectValue(event.target.value)
-
-    // }
 
     const{title, price} = formValues;
-
-    useEffect (() =>{
-        console.log("cambio en el titulo");
-    }, [title])
 
 
     const handleSubmit = event =>{
         event.preventDefault();
         console.log(formValues)
+    }
+
+    const handleChangeOnCheckbox = event =>{
+        setOnSale(event.target.value);
     }
 
     return (
@@ -74,21 +53,40 @@ const NewAdFormWithCustomHook = () =>{
           onChange = {handleInputChange}
         />
 
+        <h3>Etiqueta</h3>
             <select
-                defaultValue={true}
-                name= "onSale"
+                
+                name= "tag"
                 onChange={handleInputChange}
                 className="browser-default custom-select">
-                 <option selected value={true}>Vendo</option>
-                 <option value={false}>Compro</option>
+                 <option  value={"lifestyle"}>Lifestyle</option>
+                 <option value={"mobile"}>Mobile</option>
+                 <option value={"motor"}>Motor</option>
+                 <option value={"work"}>Work</option>
                  
             </select>
         <div>
-        <h3>Tags</h3>
-            <Checkbox onChange={handleInputChange} name= "lifestyle" title= "lifestyle" checked={true}/>
-            <Checkbox onChange={handleInputChange} name= "mobile" title= "mobile" checked="mobile" />
-            <Checkbox onChange={handleInputChange} name= "motor" title= "motor" checked="motor" />
-            <Checkbox onChange={handleInputChange} name= "work" title= "work" checked="work" />
+        <h3>¿Vendes o compras?</h3>
+        <label>
+            <input 
+            type="radio" 
+            value= "sell"
+            name="onSale"
+            checked={onSale === "sell"}
+            onChange={handleChangeOnCheckbox} />
+            Vendo
+      </label>
+      <label>
+            <input
+            name="onSale" 
+            type="radio"
+            checked={onSale === "buy"}
+            value= "buy"
+            onChange={handleChangeOnCheckbox} />
+            Compro
+      </label>
+      
+            
             
         </div>
             
