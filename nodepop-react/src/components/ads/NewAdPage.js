@@ -6,30 +6,33 @@ import Layout from '../layout/Layout';
 import { Redirect } from 'react-router-dom';
 import NewAdForm from './NewAdForm';
 import NewAdFormWithCustomHook from './NewAdFormCustomHook';
+import { publishAd } from '../../api/publishAd';
 
 
 
 const NewAdPage = ({isLogged})=>{
 
-    const handleSubmit =  (formValues, onSale) =>{
+    const handleSubmit = async  (formValues, onSale) =>{
       
+       
         
         if(onSale === "sell") {
             const newFormValues = {
                 ...formValues,
-                onSale: true,
+                sale: true,
             }
             console.log(newFormValues);
-            return newFormValues
+            await publishAd(newFormValues)
         }
 
         if(onSale === "buy") {
             const newFormValues = {
                 ...formValues,
-                onSale: false,
+
+                sale: false,
             }
             console.log(newFormValues);
-            return newFormValues
+            await publishAd(newFormValues)
         }
 
       

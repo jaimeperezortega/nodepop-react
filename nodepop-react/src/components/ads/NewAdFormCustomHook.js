@@ -10,19 +10,27 @@ import { useForm } from '../../hooks/useForm';
 
 const NewAdFormWithCustomHook = ({onSubmit}) =>{
 
-    const [formValues, handleInputChange] = useForm({
-        title:"",
+    const [formValues, setFormValues] = useState({
+        name:"",
         price:"",
-        tag:"",
+        tags:"",
 
     });
+
+    const handleInputChange = ({target}) =>{
+
+        setFormValues({
+            ...formValues,
+            [target.name]: target.value
+        });
+    }
 
     const [onSale, setOnSale] = useState(true);
 
 
 
 
-    const{title, price} = formValues;
+    const{name, price, tags} = formValues;
 
 
     
@@ -41,10 +49,10 @@ const NewAdFormWithCustomHook = ({onSubmit}) =>{
         <form className="loginForm" onSubmit = {handleSubmit}>
         <FormField
           type="text"
-          name="title"
+          name="name"
           label="Nombre del producto"
           className="loginForm-field"
-          value= {title}
+          value= {name}
           onChange = {handleInputChange}
         />
         <FormField
@@ -59,7 +67,7 @@ const NewAdFormWithCustomHook = ({onSubmit}) =>{
         <h3>Etiqueta</h3>
             <select
                 
-                name= "tag"
+                name= "tags"
                 onChange={handleInputChange}
                 className="browser-default custom-select">
                  <option  value={"lifestyle"}>Lifestyle</option>
