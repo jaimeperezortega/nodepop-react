@@ -15,11 +15,20 @@ const NewAdForm = () =>{
     const [inputs, setInputs] = React.useState({
         title: '',
         price: '',
-        onSale: null,
+        onSale: '',
+        tags: "",
     });
 
     const handleClickOnOption = (event, value) =>{
         console.log("Click en Option", value);
+        setInputs(oldCredentials => {
+
+            const newInputs = {
+                ...oldCredentials,
+                [event.target.name]: event.target.value,
+            }
+           return newInputs
+        });
         
 
  
@@ -41,6 +50,26 @@ const NewAdForm = () =>{
            return newInputs
         });
         
+    }
+
+    const clickOnCheckBox = (event) =>{
+        console.log("Click on checkbox", event.target.value)
+        setInputs(oldCredentials => {
+
+            const newInputs = {
+                ...oldCredentials,
+                [oldCredentials.tags]: event.target.value,
+            }
+           return newInputs
+        });
+        // setInputs(oldCredentials => {
+
+        //     const newInputs = {
+        //         ...oldCredentials,
+        //         [inputs.tags]: event.target.value,
+        //     }
+        //    return newInputs
+        // });
     }
 
     
@@ -70,7 +99,17 @@ const NewAdForm = () =>{
             <option onSubmit ={handleInputChange}  value= {true}>Vendo</option>
             <option onSelect ={handleInputChange} value= {false} >Compro</option>
             
-    </select>
+    </select> 
+    <div>
+
+            <Checkbox clickOnCheckBox={clickOnCheckBox} name= "lifestyle" title= "lifestyle" checked="lifestyle" />
+            <Checkbox clickOnCheckBox={clickOnCheckBox} name= "mobile" title= "mobile" value="mobile" />
+            <Checkbox clickOnCheckBox={clickOnCheckBox} name= "motor" title= "motor" value="motor" />
+            <Checkbox clickOnCheckBox={clickOnCheckBox} name= "work" title= "work" value="work" />
+    </div>
+   
+    
+    
 
 
         <Button type="submit" className="loginForm-submit" variant="primary" disabled={ !inputs.title || !inputs.price} > 
