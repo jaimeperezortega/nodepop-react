@@ -8,7 +8,7 @@ import T from 'prop-types';
 import Checkbox from '../shared/SessionCheckBox';
 import { useForm } from '../../hooks/useForm';
 
-const NewAdFormWithCustomHook = () =>{
+const NewAdFormWithCustomHook = ({onSubmit}) =>{
 
     const [formValues, handleInputChange] = useForm({
         title:"",
@@ -25,13 +25,16 @@ const NewAdFormWithCustomHook = () =>{
     const{title, price} = formValues;
 
 
-    const handleSubmit = event =>{
-        event.preventDefault();
-        console.log(formValues)
-    }
+    
 
     const handleChangeOnCheckbox = event =>{
         setOnSale(event.target.value);
+    }
+
+    const handleSubmit = event =>{
+        event.preventDefault();
+        onSubmit(formValues, onSale);
+        
     }
 
     return (

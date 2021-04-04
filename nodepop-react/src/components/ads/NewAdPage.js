@@ -11,6 +11,30 @@ import NewAdFormWithCustomHook from './NewAdFormCustomHook';
 
 const NewAdPage = ({isLogged})=>{
 
+    const handleSubmit =  (formValues, onSale) =>{
+      
+        
+        if(onSale === "sell") {
+            const newFormValues = {
+                ...formValues,
+                onSale: true,
+            }
+            console.log(newFormValues);
+            return newFormValues
+        }
+
+        if(onSale === "buy") {
+            const newFormValues = {
+                ...formValues,
+                onSale: false,
+            }
+            console.log(newFormValues);
+            return newFormValues
+        }
+
+      
+      }
+
 
     if (isLogged) {
 
@@ -19,7 +43,7 @@ const NewAdPage = ({isLogged})=>{
        
             <Layout isLogged={isLogged} title="Nodepop React">
                 <h1>PUBLICAR ANUNCIO</h1>
-                <NewAdFormWithCustomHook/>
+                <NewAdFormWithCustomHook onSubmit = {handleSubmit}/>
             </Layout>
             
         )
