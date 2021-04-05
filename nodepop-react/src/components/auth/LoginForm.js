@@ -96,7 +96,7 @@ LoginForm.defaultProps = { //Es buena idea pasar por defaukt props los que sean 
         onChange = {handleInputChange}
       />
      
-    <Checkbox value={true} title="Mantener sesión" onChange={clickOnCheckBox} />
+    <Checkbox  title="Mantener sesión" onClick={clickOnCheckBox} />
    
       <Button type="submit" className="loginForm-submit" variant="primary" disabled={isLoading || !credentials.email || !credentials.password} > {/*Con este condicional establezaco si el botón está o no habilitado en función del estado del componente. Si no hay valor en username o en password, el botón queda deshabilitado}*/}
 

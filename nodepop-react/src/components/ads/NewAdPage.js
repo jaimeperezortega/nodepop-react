@@ -12,11 +12,12 @@ import { publishAd } from '../../api/publishAd';
 
 const NewAdPage = ({isLogged})=>{
 
-    const handleSubmit = async  (formValues, onSale) =>{
+    const handleSubmit = async  (formValues, sale) =>{
       
        
         
-        if(onSale === "sell") {
+        if(sale === "sell") {
+            console.log(sale)
             const newFormValues = {
                 ...formValues,
                 sale: true,
@@ -25,7 +26,8 @@ const NewAdPage = ({isLogged})=>{
             await publishAd(newFormValues)
         }
 
-        if(onSale === "buy") {
+        if(sale === "buy") {
+            console.log(sale)
             const newFormValues = {
                 ...formValues,
 

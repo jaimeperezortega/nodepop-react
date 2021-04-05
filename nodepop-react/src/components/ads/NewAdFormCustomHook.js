@@ -25,7 +25,12 @@ const NewAdFormWithCustomHook = ({onSubmit}) =>{
         });
     }
 
-    const [onSale, setOnSale] = useState(true);
+    const [sale, setOnSale] = useState(true);
+
+    const checkOnCheckBox = () =>{
+        setOnSale(!sale);
+        console.log("clicado el checkbox")
+    }
 
 
 
@@ -41,7 +46,7 @@ const NewAdFormWithCustomHook = ({onSubmit}) =>{
 
     const handleSubmit = event =>{
         event.preventDefault();
-        onSubmit(formValues, onSale);
+        onSubmit(formValues, sale);
         
     }
 
@@ -78,24 +83,26 @@ const NewAdFormWithCustomHook = ({onSubmit}) =>{
             </select>
         <div>
         <h3>¿Vendes o compras?</h3>
-        <label>
+
+        <Checkbox title="Marcar para venta" onClick={checkOnCheckBox}/>
+        {/* <label>
             <input 
             type="radio" 
             value= "sell"
-            name="onSale"
-            checked={onSale === "sell"}
+            name="sale"
+            checked={sale === "sell"}
             onChange={handleChangeOnCheckbox} />
             Vendo
       </label>
       <label>
             <input
-            name="onSale" 
+            name="sale" 
             type="radio"
-            checked={onSale === "buy"}
+            checked={sale === "buy"}
             value= "buy"
             onChange={handleChangeOnCheckbox} />
             Compro
-      </label>
+      </label> */}
       
             
             
@@ -105,7 +112,7 @@ const NewAdFormWithCustomHook = ({onSubmit}) =>{
         <Button type="submit" className="loginForm-submit" variant="primary" > 
   
         
-          Log in
+          Publicar
         </Button>
       </form>
     )

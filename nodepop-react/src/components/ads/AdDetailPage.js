@@ -4,7 +4,7 @@ import React from 'react';
 import Button from '../shared/Button';
 import Layout from '../layout/Layout';
 import { render } from 'react-dom';
-import {getAdDetail} from '../../api/ads';
+import {getAdDetail, deleteAd} from '../../api/ads';
 import {Link, Redirect} from 'react-router-dom'
 
 
@@ -27,7 +27,13 @@ const AdDetailedPage = (props) => {
         return <Redirect to='/404'/> 
     }
 
+const handleDeleteButton = async () => {
+    console.log(ad.id);
+    await deleteAd(ad.id);
+    
+    <Redirect to="/"/>
 
+}
 
     return (
    
@@ -48,6 +54,14 @@ const AdDetailedPage = (props) => {
         <span className = "adPrice">Ofrezco máximo: {ad.price} €</span>
 
     </div>} 
+    <Button
+          as={Link}
+          onClick={handleDeleteButton}
+          variant="primary"
+          className="header-button"
+        >
+          Borrar Anuncio
+        </Button>
     <div>{ad.tags.map( tag => 
        <div key ={tag}className="tagItem">#{tag} </div>)}
     

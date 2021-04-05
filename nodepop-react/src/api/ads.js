@@ -17,6 +17,13 @@ export const getAdDetail = adId => {
 
     return response
   };
+
+  export const deleteAd = adId => {
+    const url = `http://localhost:3001/api/v1/adverts/${adId}`;
+    const response = client.delete(url);
+
+    return response
+  };
   
 
 
