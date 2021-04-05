@@ -25,7 +25,7 @@ const NewAdFormWithCustomHook = ({onSubmit}) =>{
         });
     }
 
-    const [sale, setOnSale] = useState(true);
+    const [sale, setOnSale] = useState(false);
 
     const checkOnCheckBox = () =>{
         setOnSale(!sale);
@@ -38,11 +38,6 @@ const NewAdFormWithCustomHook = ({onSubmit}) =>{
     const{name, price, tags} = formValues;
 
 
-    
-
-    const handleChangeOnCheckbox = event =>{
-        setOnSale(event.target.value);
-    }
 
     const handleSubmit = event =>{
         event.preventDefault();

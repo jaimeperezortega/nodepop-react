@@ -23,7 +23,7 @@ const handleLogout = () => setIsLogged(false);
 
        <PrivateRoute isLogged={isLogged} path='/ad/:adId' component={AdDetailPage} /> 
        <Route path='/new-ad'>
-        {routerProps => <NewAdPage isLogged = {isLogged}/>}
+        {routerProps => <NewAdPage onLogout = {handleLogout}  isLogged = {isLogged}/>}
 
        </Route>
        <Route path='/login'>

@@ -10,13 +10,13 @@ import { publishAd } from '../../api/publishAd';
 
 
 
-const NewAdPage = ({isLogged})=>{
+const NewAdPage = ({isLogged, onLogout})=>{
 
     const handleSubmit = async  (formValues, sale) =>{
       
        
         
-        if(sale === "sell") {
+        if(sale) {
             console.log(sale)
             const newFormValues = {
                 ...formValues,
@@ -24,9 +24,7 @@ const NewAdPage = ({isLogged})=>{
             }
             console.log(newFormValues);
             await publishAd(newFormValues)
-        }
-
-        if(sale === "buy") {
+        } else {
             console.log(sale)
             const newFormValues = {
                 ...formValues,
@@ -35,6 +33,7 @@ const NewAdPage = ({isLogged})=>{
             }
             console.log(newFormValues);
             await publishAd(newFormValues)
+
         }
 
       
@@ -46,7 +45,7 @@ const NewAdPage = ({isLogged})=>{
         return(
 
        
-            <Layout isLogged={isLogged} title="Nodepop React">
+            <Layout onLogout={onLogout} isLogged={isLogged} title="Nodepop React">
                 <h1>PUBLICAR ANUNCIO</h1>
                 <NewAdFormWithCustomHook onSubmit = {handleSubmit}/>
             </Layout>
