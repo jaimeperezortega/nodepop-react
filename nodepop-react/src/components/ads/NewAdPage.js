@@ -15,73 +15,46 @@ const NewAdPage = ({isLogged, onLogout})=>{
     const handleSubmit = async  (formValues, sale, adImage) =>{
       
        
-        
-        if(sale) {
-            if(adImage){
-                console.log(sale)
-                const newFormValues = {
-                    ...formValues,
-                    sale: true,
-                    adImage: adImage,
+       const{name, price, tags} = formValues
+       
 
-            }
-            
-            const formData = new FormData(newFormValues)
-            formData.append(sale,true);
-            formData.append(adImage, adImage);
-            formData.append(name,name )
-            formData.append(price, price)
-            formData.append(tags, tags)
-            console.log(formData)
-            await publishAd(formData)
-           
-            } else {
-                console.log(sale)
-                const newFormValues = {
-                    ...formValues,
-                    sale: true,
+       let formData = new FormData();
+      
 
-            }
-            const formData = new FormData(newFormValues)
-            formData.append("sale",true);
-            formData.append("adImage", adImage);
-            formData.append("name",name )
-            formData.append("price", price)
-            formData.append("tags", tags)
-            console.log(formData)
-            await publishAd(formData)
 
-            }
-            
-        } else {
-            if(adImage){
-                console.log(sale)
-                const newFormValues = {
-                    ...formValues,
-    
-                    sale: false,
-                    adImage:adImage,
-                }
-                const formData = new FormData(newFormValues)
-                console.log(formData)
+       if(sale){
+           if (adImage) {
+               formData.append("name", name);
+               formData.append("price", price);
+               formData.append("tags", tags);
+               formData.append("photo", adImage );
+               formData.append("sale", true );
+               await publishAd(formData)
+           } else {
+                formData.append("name", name);
+                formData.append("price", price);
+                formData.append("tags", tags);
+                formData.append("sale", true );
                 await publishAd(formData)
 
-            } else {
-                console.log(sale)
-                const newFormValues = {
-                    ...formValues,
-    
-                    sale: false,
-        
-                }
-                const formData = new FormData(newFormValues)
-                console.log(formData)
-                await publishAd(formData)
+           }
+       } else {
+           if(adImage) {
+            formData.append("name", name);
+            formData.append("price", price);
+            formData.append("tags", tags);
+            formData.append("photo", adImage );
+            formData.append("sale", false );
+            await publishAd(formData)
 
-            }
-           
-
-        }
+           } else {
+            formData.append("name", name);
+            formData.append("price", price);
+            formData.append("tags", tags);
+            formData.append("sale", false );
+            await publishAd(formData)
+           }
+       }
 
       
       }
