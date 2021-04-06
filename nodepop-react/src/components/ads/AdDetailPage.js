@@ -5,11 +5,11 @@ import Button from '../shared/Button';
 import Layout from '../layout/Layout';
 import { render } from 'react-dom';
 import {getAdDetail, deleteAd} from '../../api/ads';
-import {Link, Redirect} from 'react-router-dom'
+import {Link, Redirect, Route} from 'react-router-dom'
 
 
 
-const AdDetailedPage = (props) => {
+const AdDetailedPage = ({history, ...props}) => {
     const [ad, setAd] = React.useState(null);
     const [error, setError] = React.useState(null)
 
@@ -31,8 +31,9 @@ const handleDeleteButton = async () => {
     console.log(ad.id);
     await deleteAd(ad.id);
     
-    <Redirect to="/"/>
+    history.push(`/`);
 
+    
 }
 
     return (

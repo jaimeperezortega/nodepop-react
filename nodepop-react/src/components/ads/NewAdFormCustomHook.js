@@ -37,11 +37,27 @@ const NewAdFormWithCustomHook = ({onSubmit}) =>{
 
     const{name, price, tags} = formValues;
 
+    
+    const [adImage, setAdImage] = useState(null)
+
+    const handleUploadImage = (event) =>{
+        const adImage = event.target.files[0];
+        console.log(adImage)
+        setAdImage(adImage);
+    }
+
+    
+
 
 
     const handleSubmit = event =>{
         event.preventDefault();
-        onSubmit(formValues, sale);
+        if(adImage){
+            onSubmit(formValues, sale, adImage)
+        } else {
+            onSubmit(formValues, sale);
+        }
+        
         
     }
 
@@ -102,7 +118,15 @@ const NewAdFormWithCustomHook = ({onSubmit}) =>{
             
             
         </div>
+
+
+        <div>
+            <div>
+                <label for="adImage">Foto del artículo:</label>
+            </div>
             
+            <input onChange={handleUploadImage} type="file" id="adImage" name="adImage"/>
+        </div> 
 
         <Button type="submit" className="loginForm-submit" variant="primary" > 
   
