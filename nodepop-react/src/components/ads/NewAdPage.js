@@ -3,14 +3,14 @@
 import React from 'react';
 import Button from '../shared/Button';
 import Layout from '../layout/Layout';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom';
 import NewAdForm from './NewAdForm';
 import NewAdFormWithCustomHook from './NewAdFormCustomHook';
 import { publishAd } from '../../api/publishAd';
 
 
 
-const NewAdPage = ({isLogged, onLogout})=>{
+const NewAdPage = ({isLogged, onLogout, history})=>{
 
     const handleSubmit = async  (formValues, sale, adImage) =>{
       
@@ -29,13 +29,17 @@ const NewAdPage = ({isLogged, onLogout})=>{
                formData.append("tags", tags);
                formData.append("photo", adImage );
                formData.append("sale", true );
-               await publishAd(formData)
+               await publishAd(formData);
+               history.push('/');
+
+               
            } else {
                 formData.append("name", name);
                 formData.append("price", price);
                 formData.append("tags", tags);
                 formData.append("sale", true );
                 await publishAd(formData)
+                
 
            }
        } else {
@@ -46,6 +50,7 @@ const NewAdPage = ({isLogged, onLogout})=>{
             formData.append("photo", adImage );
             formData.append("sale", false );
             await publishAd(formData)
+            
 
            } else {
             formData.append("name", name);
@@ -53,6 +58,7 @@ const NewAdPage = ({isLogged, onLogout})=>{
             formData.append("tags", tags);
             formData.append("sale", false );
             await publishAd(formData)
+           
            }
        }
 
