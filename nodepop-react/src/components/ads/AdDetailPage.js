@@ -28,10 +28,14 @@ const AdDetailedPage = ({history, ...props}) => {
     }
 
 const handleDeleteButton = async () => {
-    console.log(ad.id);
-    await deleteAd(ad.id);
+    const confirmation= window.confirm("¿Seguro que deseas borrar el anuncio?")
+
+    if(confirmation){
+        await deleteAd(ad.id);
+        history.push(`/`);
+    } 
     
-    history.push(`/`);
+    
 
     
 }

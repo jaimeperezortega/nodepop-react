@@ -127,7 +127,7 @@ const NewAdFormWithCustomHook = ({onSubmit}) =>{
             <input onChange={handleUploadImage} type="file" id="adImage" name="adImage"/>
         </div> 
 
-        <Button type="submit" className="loginForm-submit" variant="primary" > 
+        <Button type="submit" className="loginForm-submit" variant="primary" disabled={!name || !price || !tags} > 
   
         
           Publicar
