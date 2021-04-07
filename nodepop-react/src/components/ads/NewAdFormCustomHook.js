@@ -30,7 +30,6 @@ const NewAdFormWithCustomHook = ({onSubmit}) =>{
 
     const checkOnCheckBox = () =>{
         setOnSale(!sale);
-        console.log("clicado el checkbox")
     }
 
 
@@ -43,7 +42,6 @@ const NewAdFormWithCustomHook = ({onSubmit}) =>{
 
     const handleUploadImage = (event) =>{
         const adImage = event.target.files[0];
-        console.log(adImage)
         setAdImage(adImage);
     }
 

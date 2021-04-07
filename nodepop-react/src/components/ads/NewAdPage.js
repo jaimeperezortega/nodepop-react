@@ -22,13 +22,13 @@ const NewAdPage = ({isLogged, onLogout, history})=>{
       
 
 
-       if(sale){
+       
            if (adImage) {
                formData.append("name", name);
                formData.append("price", price);
                formData.append("tags", tags);
                formData.append("photo", adImage );
-               formData.append("sale", true );
+               formData.append("sale", sale );
                await publishAd(formData);
                history.push('/');
 
@@ -37,30 +37,13 @@ const NewAdPage = ({isLogged, onLogout, history})=>{
                 formData.append("name", name);
                 formData.append("price", price);
                 formData.append("tags", tags);
-                formData.append("sale", true );
-                await publishAd(formData)
-                
+                formData.append("sale", sale );
+                await publishAd(formData);
+                history.push('/');
+
+             
 
            }
-       } else {
-           if(adImage) {
-            formData.append("name", name);
-            formData.append("price", price);
-            formData.append("tags", tags);
-            formData.append("photo", adImage );
-            formData.append("sale", false );
-            await publishAd(formData)
-            
-
-           } else {
-            formData.append("name", name);
-            formData.append("price", price);
-            formData.append("tags", tags);
-            formData.append("sale", false );
-            await publishAd(formData)
-           
-           }
-       }
 
       
       }
